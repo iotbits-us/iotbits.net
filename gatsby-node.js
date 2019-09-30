@@ -1,7 +1,7 @@
-import { resolve as _resolve } from 'path';
+const path = require('path');
 
 // Create pages from markdown files
-export default function createPages({ graphql, actions }) {
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
   return new Promise((resolve) => {
     resolve(
@@ -60,7 +60,7 @@ export default function createPages({ graphql, actions }) {
         `,
       ).then((result) => {
         result.data.services.edges.forEach(({ node }) => {
-          const component = _resolve('src/templates/service.js');
+          const component = path.resolve('src/templates/service.js');
           createPage({
             path: node.frontmatter.path,
             component,
@@ -70,7 +70,7 @@ export default function createPages({ graphql, actions }) {
           });
         });
         result.data.team.edges.forEach(({ node }) => {
-          const component = _resolve('src/templates/team.js');
+          const component = path.resolve('src/templates/team.js');
           createPage({
             path: node.frontmatter.path,
             component,
@@ -80,7 +80,7 @@ export default function createPages({ graphql, actions }) {
           });
         });
         result.data.testimonials.edges.forEach(({ node }) => {
-          const component = _resolve('src/templates/testimonial.js');
+          const component = path.resolve('src/templates/testimonial.js');
           createPage({
             path: node.frontmatter.path,
             component,
@@ -93,4 +93,4 @@ export default function createPages({ graphql, actions }) {
       }),
     );
   });
-}
+};
