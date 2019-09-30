@@ -3,16 +3,16 @@ import { Link, graphql } from 'gatsby';
 import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 
-const Services = (props) => {
-  const services = props.data.allMarkdownRemark.edges;
+const Products = (props) => {
+  const products = props.data.allMarkdownRemark.edges;
   return (
-    <Layout bodyClass="page-services">
-      <SEO title="Services" />
+    <Layout bodyClass="page-products">
+      <SEO title="Products" />
       <div className="intro">
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h1>ModbusBox Features</h1>
+              <h1>Our Products</h1>
             </div>
           </div>
         </div>
@@ -20,9 +20,9 @@ const Services = (props) => {
 
       <div className="container pb-6">
         <div className="row">
-          {services.map(edge => (
+          {products.map(edge => (
             <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
-              <div className="card service service-teaser">
+              <div className="card product product-teaser">
                 <div className="card-content">
                   <h2>
                     <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
@@ -39,9 +39,9 @@ const Services = (props) => {
 };
 
 export const query = graphql`
-  query ServicesQuery {
+  query ProductsQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/services/" } }
+      filter: { fileAbsolutePath: { regex: "/products/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -57,4 +57,4 @@ export const query = graphql`
   }
 `;
 
-export default Services;
+export default Products;

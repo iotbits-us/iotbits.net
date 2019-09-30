@@ -8,8 +8,8 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           query {
-            services: allMarkdownRemark(
-              filter: { fileAbsolutePath: { regex: "/services/" } }
+            products: allMarkdownRemark(
+              filter: { fileAbsolutePath: { regex: "/products/" } }
               sort: { fields: [frontmatter___date], order: DESC }
             ) {
               edges {
@@ -59,8 +59,8 @@ exports.createPages = ({ graphql, actions }) => {
           }
         `,
       ).then((result) => {
-        result.data.services.edges.forEach(({ node }) => {
-          const component = path.resolve('src/templates/service.js');
+        result.data.products.edges.forEach(({ node }) => {
+          const component = path.resolve('src/templates/product.js');
           createPage({
             path: node.frontmatter.path,
             component,

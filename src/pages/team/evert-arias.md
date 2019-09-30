@@ -1,12 +1,12 @@
 ---
-path: '/team/sage-kirk'
-title: 'Sage Kirk'
+path: '/team/evert-arias'
+title: 'Evert Arias'
 date: 2018-11-19T10:47:58+10:00
 draft: false
 image: '/team/sage-kirk-485982-unsplash.jpg'
-jobtitle: 'Accountant'
-email: 'sage@test.com'
-linkedinurl: 'www.linkedin.com/sagekirk21'
+jobtitle: 'Embedded Software Developer'
+email: 'evert@iotbits.net'
+linkedinurl: 'www.linkedin.com/evert-arias'
 weight: 2
 ---
 

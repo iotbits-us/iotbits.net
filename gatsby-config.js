@@ -3,19 +3,20 @@ const guid = process.env.NETLIFY_GOOGLE_ANALYTICS_ID;
 module.exports = {
   siteMetadata: {
     title: 'IOTBITS',
-    description: 'Toilored IoT solution for industries and makers',
+    description: 'Providing toilored IoT solutions for industries and makers',
     contact: {
       phone: '+1 (786) 460-2431',
       email: 'support@iotbits.net',
+      telegram: 'https://t.me/iotbits',
     },
     menuLinks: [
       {
-        name: 'Home',
-        link: '/',
+        name: 'Products',
+        link: '/products',
       },
       {
         name: 'Blog',
-        link: '/',
+        link: '/blog',
       },
       {
         name: 'Contact',
@@ -55,14 +56,6 @@ module.exports = {
         trackingId: guid ? guid : 'UA-XXX-1',
         // Puts tracking script in the head instead of the body
         head: false,
-      },
-    },
-    {
-      resolve: 'gatsby-source-strapi',
-      options: {
-        apiURL: 'https://api.iotbits.net',
-        queryLimit: 1000,
-        contentTypes: ['products'],
       },
     },
   ],

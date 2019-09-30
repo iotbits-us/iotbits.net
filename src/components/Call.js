@@ -16,6 +16,12 @@ const Call = props => (
           {props.data.site.siteMetadata.contact.email}
         </a>
       </div>
+      <div className="call-telegram">
+        <strong>Telegram: </strong>
+        <a href={`${props.data.site.siteMetadata.contact.telegram}`}>
+          {props.data.site.siteMetadata.contact.telegram}
+        </a>
+      </div>
     </div>
     {props.button && (
       <div className="call-box-bottom">
@@ -37,7 +43,8 @@ export default props => (
             description
             contact {
               email
-              phone
+              phone,
+              telegram
             }
           }
         }

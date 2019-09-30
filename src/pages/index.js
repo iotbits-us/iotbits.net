@@ -1,11 +1,12 @@
 import React from 'react';
-import { graphql, withPrefix } from 'gatsby';
+import { graphql, withPrefix, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import SEO from '../components/SEO';
 import Layout from '../layouts/index';
 import Call from '../components/Call';
 
 const Home = (props) => {
+  const markdown = props.data.allMarkdownRemark.edges;
   const json = props.data.allFeaturesJson.edges;
   return (
     <Layout bodyClass="page-home">
@@ -13,15 +14,14 @@ const Home = (props) => {
       <Helmet>
         <meta
           name="description"
-          content="Small Business Theme. Multiple content types using Markdown and JSON sources. Responsive design and SCSS. This is a beautiful and artfully designed starting theme."
+          content="Providing toilored IoT solutions for industries and makers"
         />
       </Helmet>
       <div className="intro pb-4">
         <div className="container">
-          <h1>ModbusBox</h1>
+          <h1>IOTBITS</h1>
           <p>
-            Give the Power of the IoT world to any Modbus enabled device.
-            Monitor & Control from the Cloud.
+            Providing toilored IoT solutions for industries and makers
           </p>
         </div>
       </div>
@@ -30,10 +30,35 @@ const Home = (props) => {
         <Call button />
       </div>
 
+      <div className="container pt-8 pt-md-10">
+        <div className="row justify-content-start">
+          <div className="col-12">
+            <h2 className="title-3 text-dark mb-3">Our Products</h2>
+          </div>
+          {markdown.map(edge => (
+            <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
+              <div className="card product product-teaser">
+                <div className="card-content">
+                  <h2>
+                    <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
+                  </h2>
+                  <p>{edge.node.excerpt}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="col-12 text-center">
+            <Link className="button button-primary mt-2" to="/products">
+              View All Products
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <div className="container pt-5 pb-5 pt-md-7 pb-md-7">
         <div className="row justify-content-center">
           <div className="col-12">
-            <h2 className="title-3 text-dark mb-4">ModbusBox Features</h2>
+            <h2 className="title-3 text-dark mb-4">What We Do</h2>
           </div>
           {json.map(edge => (
             <div key={edge.node.id} className="col-12 col-md-6 col-lg-4 mb-2">
@@ -57,7 +82,7 @@ const Home = (props) => {
 export const query = graphql`
   query {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/services/" } }
+      filter: { fileAbsolutePath: { regex: "/products/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

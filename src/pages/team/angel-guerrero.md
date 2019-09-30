@@ -1,12 +1,12 @@
 ---
-path: '/team/peter-van-eijk'
-title: 'Peter Van Eijk'
+path: '/team/angel-guerrero'
+title: 'Angel Guerrero'
 date: 2018-11-19T10:47:58+10:00
 draft: false
 image: '/team/peter-van-eijk-711986-unsplash.jpg'
-jobtitle: 'Director'
-email: 'peter@test.com'
-linkedinurl: 'www.linkedin.com/pvanijk'
+jobtitle: 'Embedded Hardware Developer'
+email: 'luisgcu@iotbits.net'
+linkedinurl: 'www.linkedin.com/angel'
 weight: 1
 ---
 
