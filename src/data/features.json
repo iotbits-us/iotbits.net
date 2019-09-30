@@ -1,0 +1,17 @@
+[
+  {
+    "title": "WiFi",
+    "description": "WiFi interface to connect to the cloud",
+    "image": "/features/noun_branding_1885335.svg"
+  },
+  {
+    "title": "Multiple Slave",
+    "description": "Connect up to 4 slaves",
+    "image": "/features/noun_The Process_1885341.svg"
+  },
+  {
+    "title": "Embedded Web UI",
+    "description": "Setup and manage the device through it's Web UI",
+    "image": "/features/noun_3d modeling_1885342.svg"
+  }
+]
