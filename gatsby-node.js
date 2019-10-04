@@ -106,16 +106,6 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
-        result.data.posts.edges.forEach(({ node }) => {
-          const blogPost = path.resolve('./src/templates/blog-post.js');
-          createPage({
-            path: node.fields.slug,
-            component: blogPost,
-            context: {
-              slug: node.fields.slug,
-            },
-          });
-        });
         resolve();
       }),
     );

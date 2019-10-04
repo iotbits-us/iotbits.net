@@ -8,7 +8,10 @@ const Menu = (props) => {
       <ul>
         {menuLinks.map(link => (
           <li key={link.name}>
-            <Link to={link.link}>{link.name}</Link>
+            {
+              link.name !== 'Blog' ? <Link to={link.link}>{link.name}</Link>
+                : <a href={link.link} target="_blank" rel="noopener noreferrer">{link.name.toUpperCase()}</a>
+            }
           </li>
         ))}
       </ul>
