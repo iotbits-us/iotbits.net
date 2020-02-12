@@ -56,6 +56,17 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'https://api.iotbits.net',
+        contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
+          'product',
+          'company-feature',
+        ],
+        queryLimit: 1000,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: guid ? guid : 'UA-137998950-3',

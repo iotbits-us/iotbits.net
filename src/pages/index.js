@@ -6,8 +6,8 @@ import Layout from '../layouts/index';
 import Call from '../components/Call';
 
 const Home = (props) => {
-  const markdown = props.data.allMarkdownRemark.edges;
-  const json = props.data.allFeaturesJson.edges;
+  const products = props.data.allStrapiProduct.edges;
+  const companyFeatures = props.data.allStrapiCompanyFeature.edges;
   return (
     <Layout bodyClass="page-home">
       <SEO title="Home" />
@@ -35,14 +35,14 @@ const Home = (props) => {
           <div className="col-12">
             <h2 className="title-3 text-dark mb-3">Our Products</h2>
           </div>
-          {markdown.map(edge => (
-            <div key={edge.node.frontmatter.path} className="col-12 col-md-4 mb-1">
+          {products.map(edge => (
+            <div key={edge.node.id} className="col-12 col-md-4 mb-1">
               <div className="card product product-teaser">
                 <div className="card-content">
                   <h2>
-                    <Link to={edge.node.frontmatter.path}>{edge.node.frontmatter.title}</Link>
+                    <Link to={edge.node.id}>{edge.node.name}</Link>
                   </h2>
-                  <p>{edge.node.excerpt}</p>
+                  <p>{edge.node.description}</p>
                 </div>
               </div>
             </div>
@@ -60,12 +60,12 @@ const Home = (props) => {
           <div className="col-12">
             <h2 className="title-3 text-dark mb-4">What We Do</h2>
           </div>
-          {json.map(edge => (
+          {companyFeatures.map(edge => (
             <div key={edge.node.id} className="col-12 col-md-6 col-lg-4 mb-2">
               <div className="feature">
                 {edge.node.image && (
                   <div className="feature-image">
-                    <img alt="" src={withPrefix(edge.node.image)} />
+                    <img alt="" src={withPrefix(edge.node.image.publicURL)} />
                   </div>
                 )}
                 <h2 className="feature-title">{edge.node.title}</h2>
@@ -79,31 +79,27 @@ const Home = (props) => {
   );
 };
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/products/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+export const query = graphql`  
+  query ProductAndCompanyFeature {
+    allStrapiProduct {
       edges {
         node {
           id
-          frontmatter {
-            path
-            title
-            date(formatString: "DD MMMM YYYY")
-          }
-          excerpt
+          name
+          features
+          description
         }
       }
     }
-    allFeaturesJson {
+    allStrapiCompanyFeature {
       edges {
         node {
           id
           title
-          description
-          image
+          description,
+          image {
+            publicURL
+          }
         }
       }
     }
