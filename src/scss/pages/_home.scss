@@ -1,18 +1,18 @@
 .page-home {
-  background-image: url('../images/undraw_connected_world_wuay.svg');
+  background-image: url('../images/undraw_dashboard_nklg.svg');
   background-repeat: no-repeat;
-  background-size: 115%;
+  background-size: 90%;
   background-position: 49px -40px;
   @include media-breakpoint-up(sm) {
-    background-size: 90%;
+    background-size: 70%;
     background-position: 159px -40px;
   }
   @include media-breakpoint-up(md) {
-    background-size: 70%;
+    background-size: 60%;
     background-position: 100% -50px;
   }
   @include media-breakpoint-up(lg) {
-    background-size: 60%;
-    background-position: 100% -70px;
+    background-size: 50%;
+    background-position: 100% -20px;
   }
 }

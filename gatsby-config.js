@@ -13,6 +13,10 @@ module.exports = {
     },
     menuLinks: [
       {
+        name: 'Home',
+        link: '/',
+      },
+      {
         name: 'Products',
         link: '/products',
       },
@@ -62,6 +66,7 @@ module.exports = {
         contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
           'product',
           'company-feature',
+          'user',
         ],
         queryLimit: 1000,
       },
@@ -100,5 +105,16 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      // If you want to use styled components you should change the injection order.
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    // If you want to use styled components you should add the plugin here.
+    // 'gatsby-plugin-styled-components',
   ],
 };

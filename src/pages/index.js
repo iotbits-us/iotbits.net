@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import SEO from '../components/SEO';
 import Layout from '../layouts/index';
 import Call from '../components/Call';
+import ProductCard from '../components/ProductCard';
 
 const Home = (props) => {
   const products = props.data.allStrapiProduct.edges;
@@ -30,21 +31,14 @@ const Home = (props) => {
         <Call button />
       </div>
 
-      <div className="container pt-8 pt-md-10">
+      <div style={{ 'margin-top': '100px' }} className="container pt-8 pt-md-10">
         <div className="row justify-content-start">
           <div className="col-12">
             <h2 className="title-3 text-dark mb-3">Our Products</h2>
           </div>
           {products.map(edge => (
-            <div key={edge.node.id} className="col-12 col-md-4 mb-1">
-              <div className="card product product-teaser">
-                <div className="card-content">
-                  <h2>
-                    <Link to={edge.node.id}>{edge.node.name}</Link>
-                  </h2>
-                  <p>{edge.node.description}</p>
-                </div>
-              </div>
+            <div key={edge.node.strapiId} className="col-12 col-md-4 mb-1">
+               <ProductCard product={edge.node}/>
             </div>
           ))}
           <div className="col-12 text-center">
@@ -85,9 +79,14 @@ export const query = graphql`
       edges {
         node {
           id
+          strapiId
           name
-          features
           description
+          content
+          image {
+            publicURL
+          }
+          status
         }
       }
     }

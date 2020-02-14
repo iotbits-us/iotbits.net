@@ -1,38 +1,47 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, withPrefix } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 import SEO from '../components/SEO';
 import Layout from '../layouts/index';
 
-const Product = ({ data }) => {
-  const { title } = data.markdownRemark.frontmatter;
-  const { html } = data.markdownRemark;
+const Product = (props) => {
+  // eslint-disable-next-line no-console
+  console.log(props);
+  const product = props.data.allStrapiProduct.edges[0].node;
   return (
     <Layout bodyClass="page-product">
-      <SEO title={title} />
-      <div className="strip strip-white strip-diagonal">
-        <div className="container pt-4 pt-md-10">
+      <SEO title={product.name} />
+      <div className="container pt-4 pt-md-10">
           <div className="row justify-content-start">
             <div className="col-12 col-md-8">
               <div className="product product-single">
-                <h1 className="title">{title}</h1>
-                <div className="content" dangerouslySetInnerHTML={{ __html: html }} />
+                <h1 className="title">{product.name}</h1>
+                <img alt="" src={withPrefix(product.image.publicURL)} />
+                <div className="content">
+                <ReactMarkdown source={product.content} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        title
-        path
+  query ProductQuery($id: String!) {
+    allStrapiProduct(filter: { strapiId: { eq: $id } }) {
+      edges {
+        node {
+          name
+          strapiId
+          content
+          description
+          image {
+            publicURL
+          }
+        }
       }
-      html
     }
   }
 `;

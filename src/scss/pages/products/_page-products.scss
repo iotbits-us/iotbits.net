@@ -1,18 +1,18 @@
 .page-products {
-  background-image: url('../images/undraw_product_tour_foyt.svg');
-  background-repeat: no-repeat;
-  background-size: 115%;
-  background-position: 49px -40px;
-  @include media-breakpoint-up(sm) {
-    background-size: 90%;
-    background-position: 159px -40px;
-  }
-  @include media-breakpoint-up(md) {
-    background-size: 85%;
-    background-position: 199px -80px;
-  }
-  @include media-breakpoint-up(lg) {
-    background-size: 60%;
-    background-position: 100% -110px;
-  }
+  // background-image: url('../images/undraw_circuit_board_4c4d.svg');
+  // background-repeat: no-repeat;
+  // background-size: 115%;
+  // background-position: 49px -40px;
+  // @include media-breakpoint-up(sm) {
+  //   background-size: 90%;
+  //   background-position: 159px -40px;
+  // }
+  // @include media-breakpoint-up(md) {
+  //   background-size: 85%;
+  //   background-position: 199px -80px;
+  // }
+  // @include media-breakpoint-up(lg) {
+  //   background-size: 60%;
+  //   background-position: 100% -0px;
+  // }
 }
