@@ -1,17 +1,7 @@
 [
   {
-    "title": "IoT Telemetry Solutions",
-    "description": "IoT devices produce many types of information, including telemetry, metadata, state, and commands and responses. We develop solutions to send data from devices to any data visualization platform.",
-    "image": "/features/noun_branding_1885335.svg"
+    "title": "",
+    "description": "",
+    "image": ""
   },
-  {
-    "title": "Control & Monitor for Industrial Machinery",
-    "description": "We put your industrial machines and industrial devices in the cloud. Reduce maintenance trips, improve customer service and get full control of your industrial machinery and devices at any time from anyplace.",
-    "image": "/features/noun_3d modeling_1885342.svg"
-  },
-  {
-    "title": "Open Source Solutions",
-    "description": "Open source solutions are accelerating the innovation and adoption of IoT. We aim to contribute to the open source community by providing developers with the tools their needs to create custom solutions for their IoT need when using our devices.",
-    "image": "/features/noun_The Process_1885341.svg"
-  }
 ]
