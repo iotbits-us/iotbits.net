@@ -15,14 +15,22 @@ const Footer = props => (
               </li>
               <li>
                 {' '}
+                <Link to="/products">Products</Link>
+              </li>
+              <li>
+                {' '}
+                <a href="https://blog.iotbits.net" target="_blank" rel="noopener noreferrer">Blog</a>
+              </li>
+              <li>
+                {' '}
                 <Link to="/contact">Contact</Link>
               </li>
               <li className="copyright">
                 ©
 {' '}
-                {new Date().getFullYear()}
-                {' '}
-                {props.data.site.siteMetadata.title}
+{new Date().getFullYear()}
+{' '}
+{props.data.site.siteMetadata.title}
               </li>
             </ul>
           </div>
