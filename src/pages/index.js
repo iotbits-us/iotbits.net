@@ -15,14 +15,14 @@ const Home = (props) => {
       <Helmet>
         <meta
           name="description"
-          content="Providing toilored IoT solutions for industries and makers"
+          content="Providing tailored IoT solutions for industries and makers"
         />
       </Helmet>
       <div className="intro pb-4">
         <div className="container">
           <h1>IOTBITS</h1>
           <p>
-            Providing toilored IoT solutions for industries and makers
+            Providing tailored IoT solutions for industries and makers
           </p>
         </div>
       </div>
