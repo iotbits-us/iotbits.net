@@ -1,5 +1,3 @@
-const guid = process.env.NETLIFY_GOOGLE_ANALYTICS_ID;
-
 module.exports = {
   siteMetadata: {
     title: 'IOTBITS',
@@ -30,13 +28,11 @@ module.exports = {
       },
     ],
     social: {
-      Twitter: 'kylemathews',
+      Twitter: '',
     },
   },
   plugins: [
     'gatsby-plugin-sass',
-    'gatsby-transformer-json',
-    'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -63,7 +59,8 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: 'https://api.iotbits.net',
-        contentTypes: [ // List of the Content Types you want to be able to request from Gatsby.
+        contentTypes: [
+          // List of the Content Types you want to be able to request from Gatsby.
           'product',
           'company-feature',
           'post',
@@ -75,31 +72,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: guid ? guid : 'UA-137998950-3',
+        trackingId: 'UA-158635021-2',
         // Puts tracking script in the head instead of the body
         head: false,
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-            options: {
-              wrapperStyle: 'margin-bottom: 1.0725rem',
-            },
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
-        ],
       },
     },
     'gatsby-transformer-sharp',
