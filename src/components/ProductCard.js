@@ -61,7 +61,7 @@ export default function ProductCard({ product }) {
           More Info
         </Button>
         {product.status === 'evaluation' || product.status === 'available' ? (
-          <Button size="small" color="primary" href=" ">
+          <Button size="small" color="primary" href="/contact">
             ORDER
           </Button>
         ) : null}
@@ -97,7 +97,7 @@ export default function ProductCard({ product }) {
           More Info
         </Button>
         {product.status === 'evaluation' || product.status === 'available' ? (
-          <Button size="small" color="primary" href=" ">
+          <Button size="small" color="primary" href="/contact">
             ORDER
           </Button>
         ) : null}
