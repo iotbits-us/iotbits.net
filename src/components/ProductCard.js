@@ -31,7 +31,43 @@ export default function ProductCard({ product }) {
   } else {
     statusColor = 'secondary';
   }
-  return (
+  return product.external ? (
+    <Card className={classes.root}>
+      <a style={{ textDecoration: 'none' }} href={`${product.link}`}>
+        <CardActionArea>
+          <Chip
+            style={{ float: 'right', margin: '3px', textTransform: 'capitalize' }}
+            size="small"
+            label={product.status}
+            color={statusColor}
+          />
+          <CardMedia
+            className={classes.media}
+            image={product.image.publicURL}
+            title={product.name}
+          />
+          <CardContent style={{ 'min-height': 250 }}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {product.name}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {product.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </a>
+      <CardActions>
+        <Button size="small" color="primary" href={`${product.link}`}>
+          More Info
+        </Button>
+        {product.status === 'evaluation' || product.status === 'available' ? (
+          <Button size="small" color="primary" href=" ">
+            ORDER
+          </Button>
+        ) : null}
+      </CardActions>
+    </Card>
+  ) : (
     <Card className={classes.root}>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.strapiId}`}>
         <CardActionArea>
@@ -60,13 +96,8 @@ export default function ProductCard({ product }) {
         <Button size="small" color="primary" href={`/product/${product.strapiId}`}>
           More Info
         </Button>
-        {product.status === 'evaluation' ? (
-          <Button size="small" color="primary" href={`/product/${product.strapiId}`}>
-            REQUEST SAMPLE
-          </Button>
-        ) : null}
-        {product.status === 'available' ? (
-          <Button size="small" color="primary" href={`/product/${product.strapiId}`}>
+        {product.status === 'evaluation' || product.status === 'available' ? (
+          <Button size="small" color="primary" href=" ">
             ORDER
           </Button>
         ) : null}

@@ -45,7 +45,9 @@ export const query = graphql`
           image {
             publicURL
           }
-          status
+          status,
+          external,
+          link
         }
       }
     }
