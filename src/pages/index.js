@@ -29,11 +29,12 @@ const Home = (props) => {
         <Call button />
       </div>
 
-      <div style={{ 'margin-top': '100px' }} className="container pt-8 pt-md-10">
+      <div style={{ 'margin-top': '40px' }} className="container pt-8 pt-md-10">
         <div className="row justify-content-start">
           <div className="col-12">
             <h2 className="title-3 text-dark mb-3">About Us</h2>
           </div>
+          <div className="col-12">
           <p>
             At IOTBITS we are focused into development of tailored IoT hardware and software
             solutions that facilitate collecting data from industrial devices into cloud IoT
@@ -54,6 +55,7 @@ const Home = (props) => {
             best suited for customers applications, with solid expertise developing IoT solutions,
             based on Wi-Fi, LoRa, LoRaWAN, and Narrowband IoT.
           </p>
+          </div>
         </div>
       </div>
 
