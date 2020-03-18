@@ -15,6 +15,10 @@ const Footer = props => (
               </li>
               <li>
                 {' '}
+                <Link to="/about-us">About Us</Link>
+              </li>
+              <li>
+                {' '}
                 <Link to="/products">Products</Link>
               </li>
               <li>
