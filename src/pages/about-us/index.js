@@ -18,7 +18,7 @@ const AboutUs = () => (
       <div className="row">
         <div className="col-12">
           <p>
-            At IOTBITS we are focused into development of tailored IoT hardware and software
+            At IOTBITS we are focused into developing tailored IoT hardware and software
             solutions that facilitate collecting data from industrial devices into cloud IoT
             platforms. Our industrial technology expertise, continued delivery excellence and a
             passionate team, helps us to develop IoT connected products and solutions that would
