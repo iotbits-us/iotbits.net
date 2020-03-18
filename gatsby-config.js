@@ -7,7 +7,7 @@ module.exports = {
     contact: {
       phone: '+1 (786) 460-2431',
       email: 'support@iotbits.net',
-      telegram: 'https://t.me/iotbits',
+      telegram: 'https://t.me/IOTBITS',
     },
     menuLinks: [
       {
