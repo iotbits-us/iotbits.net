@@ -2,6 +2,7 @@ import React from 'react';
 import SEO from '../../components/SEO';
 import Layout from '../../layouts/index';
 import Call from '../../components/Call';
+import ContactForm from '../../components/ContactForm';
 
 const Contact = () => (
   <Layout bodyClass="page-contact">
@@ -68,6 +69,11 @@ const Contact = () => (
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12">
+          <ContactForm />
         </div>
       </div>
     </div>
