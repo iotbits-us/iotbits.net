@@ -35,30 +35,37 @@ const Home = (props) => {
             <h2 className="title-3 text-dark mb-3">About Us</h2>
           </div>
           <div className="col-12">
-          <p>
-            At IOTBITS we are focused into developing tailored IoT hardware and software
-            solutions that facilitate collecting data from industrial devices into cloud IoT
-            platforms. Our industrial technology expertise, continued delivery excellence and a
-            passionate team, helps us to develop IoT connected products and solutions that would
-            speed up integration of industrial controllers into the IoT world, such as Variable
-            Frequency Drives, Modbus RTU sensors and PLC's. We design and develop our products,
-            hardware, firmware and applications in the US.
+            <p>
+              At IOTBITS we are focused into developing tailored IoT hardware and software
+              solutions that facilitate collecting data from industrial devices into cloud IoT
+              platforms. Our industrial technology expertise, continued delivery excellence and a
+              passionate team, helps us to develop IoT connected products and solutions that would
+              speed up integration of industrial controllers into the IoT world, such as Variable
+              Frequency Drives, Modbus RTU sensors and PLC's. We design and develop our products,
+              hardware, firmware and applications in the US.
           </p>
-          <p>
-            We are pleased to assist our clients with full technical support of our devices, as well
-            as preparation, implementation and deployment of cloud services, in addition to
-            providing free consulting services to assist clients reimagine their online sensor
-            presence.
+            <p>
+              We are pleased to assist our clients with full technical support of our devices, as well
+              as preparation, implementation and deployment of cloud services, in addition to
+              providing free consulting services to assist clients reimagine their online sensor
+              presence.
           </p>
-          <p>
-            Our experienced IoT consultants and developers will help to define what technology is
-            best suited for customers applications, with solid expertise developing IoT solutions,
-            based on Wi-Fi, LoRa, LoRaWAN, and Narrowband IoT.
+            <p>
+              Our experienced IoT consultants and developers will help to define what technology is
+              best suited for customers applications, with solid expertise developing IoT solutions,
+              based on Wi-Fi, LoRa, LoRaWAN, and Narrowband IoT.
           </p>
           </div>
         </div>
+        <div className="row justify-content-start">
+          <div className="col-12">
+            <video width="640" height="480" autoPlay loop muted>
+              <source src="../../mbox-presentation.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
       </div>
-
+      
       <div style={{ 'margin-top': '20px' }} className="container pt-8 pt-md-10">
         <div className="row justify-content-start">
           <div className="col-12">
