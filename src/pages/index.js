@@ -43,14 +43,12 @@ const Home = (props) => {
               speed up integration of industrial controllers into the IoT world, such as Variable
               Frequency Drives, Modbus RTU sensors and PLC's. We design and develop our products,
               hardware, firmware and applications in the US.
-          </p>
-            <p>
+
               We are pleased to assist our clients with full technical support of our devices, as well
               as preparation, implementation and deployment of cloud services, in addition to
               providing free consulting services to assist clients reimagine their online sensor
               presence.
-          </p>
-            <p>
+
               Our experienced IoT consultants and developers will help to define what technology is
               best suited for customers applications, with solid expertise developing IoT solutions,
               based on Wi-Fi, LoRa, LoRaWAN, and Narrowband IoT.
@@ -59,13 +57,13 @@ const Home = (props) => {
         </div>
         <div className="row justify-content-start">
           <div className="col-12">
-            <video width="640" height="480" autoPlay loop muted>
+            <video style={{ width: '100%', 'max-width': '800px', height: 'auto' }} autoPlay loop muted>
               <source src="../../mbox-presentation.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
       </div>
-      
+
       <div style={{ 'margin-top': '20px' }} className="container pt-8 pt-md-10">
         <div className="row justify-content-start">
           <div className="col-12">
@@ -79,7 +77,7 @@ const Home = (props) => {
           <div className="col-12 text-center">
             <Link className="button button-primary mt-2" to="/products">
               View All Products
-            </Link>
+                </Link>
           </div>
         </div>
       </div>
@@ -110,17 +108,17 @@ const Home = (props) => {
 
 export const query = graphql`
   query ProductAndCompanyFeature {
-    allStrapiProduct {
-      edges {
-        node {
+          allStrapiProduct {
+          edges {
+          node {
           id
           strapiId
           name
           description
           content
           image {
-            publicURL
-          }
+          publicURL
+        }
           status
           external
           link
@@ -128,14 +126,14 @@ export const query = graphql`
       }
     }
     allStrapiCompanyFeature {
-      edges {
-        node {
+          edges {
+          node {
           id
           title
           description
           image {
-            publicURL
-          }
+          publicURL
+        }
         }
       }
     }
