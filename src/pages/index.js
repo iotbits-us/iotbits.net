@@ -58,7 +58,7 @@ const Home = (props) => {
         <div className="row justify-content-start">
           <div className="col-12">
             <video style={{ width: '100%', 'max-width': '800px', height: 'auto' }} autoPlay loop muted>
-              <source src="../../mbox-presentation.mp4" type="video/mp4" />
+              <source src="../../mbox-presentation.webm" type="video/mp4" />
             </video>
           </div>
         </div>
