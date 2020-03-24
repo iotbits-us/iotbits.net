@@ -11,7 +11,7 @@ const ContactForm = ({
   setFieldValue, isSubmitting, values, errors, touched,
 }) => (
   <Form
-    name="Contact Form"
+    name="ContactForm"
     method="post"
     data-netlify="true"
     data-netlify-recaptcha="true"
