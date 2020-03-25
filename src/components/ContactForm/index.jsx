@@ -1,122 +1,68 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
+
 import {
-  Form, withFormik, FastField, ErrorMessage,
+  Formik, Form, Field, ErrorMessage,
 } from 'formik';
-import Recaptcha from 'react-google-recaptcha';
-import * as Yup from 'yup';
-import { recaptchaKey } from '../../data/config';
-import { Button, Input } from '../common';
 
-const ContactForm = ({
-  setFieldValue, isSubmitting, values, errors, touched,
-}) => (
-  <Form
-    name="ContactForm"
-    method="post"
-    data-netlify="true"
-    data-netlify-recaptcha="true"
-    data-netlify-honeypot="bot-field"
-  >
-    <Input
-      as={FastField}
-      type="text"
-      name="name"
-      component="input"
-      aria-label="name"
-      placeholder="Full name*"
-      error={touched.name && errors.name}
-    />
-    <ErrorMessage component={Error} name="name" />
-    <Input
-      id="email"
-      aria-label="email"
-      component="input"
-      as={FastField}
-      type="email"
-      name="email"
-      placeholder="Email*"
-      error={touched.email && errors.email}
-    />
-    <ErrorMessage component={Error} name="email" />
-    <Input
-      as={FastField}
-      component="textarea"
-      aria-label="message"
-      id="message"
-      rows="8"
-      type="text"
-      name="message"
-      placeholder="Message*"
-      error={touched.message && errors.message}
-    />
-    <ErrorMessage component={Error} name="message" />
-    {values.name && values.email && values.message && (
-      <div>
-        <FastField
-          component={Recaptcha}
-          sitekey={recaptchaKey}
-          name="recaptcha"
-          onChange={value => setFieldValue('recaptcha', value)}
-        />
-        <ErrorMessage component={Error} name="recaptcha" />
-      </div>
-    )}
-    {values.success && (
-      <h4>Your message has been successfully sent, I will get back to you ASAP!</h4>
-    )}
-
-    <Button secondary type="submit" disabled={isSubmitting}>
-      Submit
-    </Button>
-  </Form>
-);
-
-export default withFormik({
-  mapPropsToValues: () => ({
-    name: '',
-    email: '',
-    message: '',
-    recaptcha: '',
-    success: false,
-  }),
-  validationSchema: () => Yup.object().shape({
-    name: Yup.string().required('Full name field is required'),
-    email: Yup.string()
-      .email('Invalid email')
-      .required('Email field is required'),
-    message: Yup.string().required('Message field is required'),
-    recaptcha: Yup.string().required('Robots are not welcome yet!'),
-  }),
-  handleSubmit: async (
-    {
-      name, email, message, recaptcha,
-    },
-    { setSubmitting, resetForm, setFieldValue },
-  ) => {
-    try {
-      const encode = data => Object.keys(data)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-        .join('&');
-      await fetch('/?no-cache=1', {
+export default () => (
+  <Formik
+    initialValues={{
+      name: '',
+      email: '',
+      message: '',
+    }}
+    onSubmit={(values, actions) => {
+      // eslint-disable-next-line no-undef
+      fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': 'contact',
-          name,
-          email,
-          message,
-          'g-recaptcha-response': recaptcha,
-        }),
-      });
+        // eslint-disable-next-line no-undef
+        body: encode({ 'form-name': 'Contact Form', ...values }),
+      })
+        .then(() => {
+          // eslint-disable-next-line no-console
+          console.log('Success');
+          actions.resetForm();
+        })
+        .catch(() => {
+          // eslint-disable-next-line no-console
+          console.log('Error');
+        })
+        .finally(() => actions.setSubmitting(false));
+    }}
+    validate={(values) => {
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      const errors = {};
+      if (!values.name) {
+        errors.name = 'Name Required';
+      }
+      if (!values.email || !emailRegex.test(values.email)) {
+        errors.email = 'Valid Email Required';
+      }
+      if (!values.message) {
+        errors.message = 'Message Required';
+      }
+      return errors;
+    }}
+  >
+    {() => (
+      <Form>
+        <label htmlFor="name">Name: </label>
+        <Field name="name" />
+        <ErrorMessage name="name" />
 
-      await setSubmitting(false);
-      await setFieldValue('success', true);
-      setTimeout(() => resetForm(), 2000);
-    } catch (err) {
-      setSubmitting(false);
-      setFieldValue('success', false);
-      // eslint-disable-next-line no-console
-      console.log('Something went wrong, please try again!');
-    }
-  },
-})(ContactForm);
+        <label htmlFor="email">Email: </label>
+        <Field name="email" />
+        <ErrorMessage name="email" />
+
+        <label htmlFor="message">Message: </label>
+        <Field name="message" component="textarea" />
+        <ErrorMessage name="message" />
+
+        <button type="submit">Send</button>
+      </Form>
+    )}
+  </Formik>
+);
