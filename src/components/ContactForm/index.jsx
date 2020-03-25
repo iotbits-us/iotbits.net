@@ -18,7 +18,7 @@ export default () => (
       axios('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: JSON.stringify({ 'form-name': 'Contact Form', ...values }),
+        body: JSON.parse({ 'form-name': 'Contact Form', ...values }),
       })
         .then(() => {
           // eslint-disable-next-line no-console
