@@ -15,12 +15,11 @@ export default () => (
       message: '',
     }}
     onSubmit={(values, actions) => {
-      axios
-        .post('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: JSON.stringify({ 'form-name': 'Contact Form', ...values }),
-        })
+      axios('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: JSON.stringify({ 'form-name': 'Contact Form', ...values }),
+      })
         .then(() => {
           // eslint-disable-next-line no-console
           console.log('Success');
