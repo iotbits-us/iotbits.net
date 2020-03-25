@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
+import axios from 'axios';
 
 import {
   Formik, Form, Field, ErrorMessage,
@@ -14,13 +15,12 @@ export default () => (
       message: '',
     }}
     onSubmit={(values, actions) => {
-      // eslint-disable-next-line no-undef
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        // eslint-disable-next-line no-undef
-        body: encode({ 'form-name': 'Contact Form', ...values }),
-      })
+      axios
+        .post('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: JSON.stringify({ 'form-name': 'Contact Form', ...values }),
+        })
         .then(() => {
           // eslint-disable-next-line no-console
           console.log('Success');
