@@ -1,3 +1,8 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable no-shadow */
+/* eslint-disable no-console */
 import React, { useRef, useEffect, useState } from 'react';
 import {
   ErrorMessage, Field, Form, Formik,
@@ -21,6 +26,7 @@ export default () => {
   const rcRef = useRef(null);
 
   useEffect(() => {
+    // eslint-disable-next-line no-shadow
     const handleSubmit = async (formValues, token) => {
       const data = {
         ...formValues,
@@ -76,7 +82,8 @@ export default () => {
           Error
         </button>
       );
-    } if (msgSent) {
+    }
+    if (msgSent) {
       return (
         <button className="btn btn-lg btn-outline-success mt-3" type="submit" disabled>
           Submitted
@@ -84,13 +91,13 @@ export default () => {
       );
     }
     return (
-        <button
-          className="btn btn-lg btn-outline-info mt-3"
-          type="submit"
-          disabled={isSubmitting || executing}
-        >
-          Submit
-        </button>
+      <button
+        className="btn btn-lg btn-outline-info mt-3"
+        type="submit"
+        disabled={isSubmitting || executing}
+      >
+        Submit
+      </button>
     );
   };
 
@@ -107,6 +114,7 @@ export default () => {
   };
 
   const resetReCaptcha = async () => {
+    // eslint-disable-next-line no-console
     console.log('resetting...');
     await rcRef.current.reset();
     setVerified(false);
