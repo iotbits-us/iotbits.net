@@ -15,7 +15,7 @@ export default () => (
       message: '',
     }}
     onSubmit={(values, actions) => {
-      axios('/', {
+      axios('/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: JSON.stringify({ 'form-name': 'Contact Form', ...values }),
