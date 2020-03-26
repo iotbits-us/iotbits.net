@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { navigate } from 'gatsby-link';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,7 +22,26 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(2),
     width: '25ch',
   },
+  message: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+  },
+  button: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    marginBottom: theme.spacing(2),
+  },
 }));
+
+const products = [
+  {
+    name: 'ModbusBox',
+  },
+  {
+    name: 'Other',
+  }
+];
 
 function encode(data) {
   return Object.keys(data)
@@ -50,7 +70,15 @@ const ContactForm = () => {
         ...state,
       }),
     })
-      .then(() => navigate(form.getAttribute('action')))
+      .then(() => {
+        setState({
+          ...state,
+          sent: true,
+          name: '',
+          email: '',
+          message: '',
+        });
+      })
       // eslint-disable-next-line no-console
       .catch(error => console.log(error));
   };
@@ -77,9 +105,12 @@ const ContactForm = () => {
             </label>
           </p>
           <TextField
+            required
             type="text"
             name="name"
+            defaultValue={state.name}
             id="name"
+            value={state.name}
             label="Name"
             className={classes.textField}
             margin="dense"
@@ -87,9 +118,11 @@ const ContactForm = () => {
             onChange={handleChange}
           />
           <TextField
+            required
             type="email"
             name="email"
             id="email"
+            value={state.email}
             label="Email"
             className={classes.textField}
             margin="dense"
@@ -97,9 +130,25 @@ const ContactForm = () => {
             onChange={handleChange}
           />
           <TextField
+            id="outlined-select-currency"
+            select
+            label="Product"
+            value={state.product}
+            onChange={handleChange}
+            variant="outlined"
+          >
+            {products.map(item => (
+              <MenuItem key={item.name} value={item.name}>
+                {item.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            required
             name="message"
             id="message"
             label="Message"
+            value={state.message}
             multiline
             style={{ margin: 8 }}
             fullWidth
@@ -110,7 +159,16 @@ const ContactForm = () => {
             variant="outlined"
             onChange={handleChange}
           />
-          <Button type="submit" variant="contained" color="primary">
+          {state.sent ? (
+            <Alert className={classes.message} severity="success">
+              <AlertTitle>Message submitted</AlertTitle>
+              Your message has been submitted. Our customer support team will contact you as soon as
+              possible.
+            </Alert>
+          ) : (
+            ''
+          )}
+          <Button className={classes.button} type="submit" variant="contained" color="primary">
             Send
           </Button>
         </form>
