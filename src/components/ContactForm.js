@@ -142,6 +142,7 @@ const ContactForm = () => {
             onChange={handleChange}
           />
           <TextField
+            required
             id="product"
             name="product"
             select
@@ -160,6 +161,7 @@ const ContactForm = () => {
             ))}
           </TextField>
           <TextField
+            required
             id="topic"
             name="topic"
             select
