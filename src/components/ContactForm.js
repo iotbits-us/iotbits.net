@@ -1,5 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { navigate } from 'gatsby-link';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 function encode(data) {
   return Object.keys(data)
@@ -17,6 +21,7 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    // eslint-disable-next-line no-undef
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -26,7 +31,8 @@ const ContactForm = () => {
       }),
     })
       .then(() => navigate(form.getAttribute('action')))
-      .catch(error => alert(error));
+      // eslint-disable-next-line no-console
+      .catch(error => console.log(error));
   };
   return (
     <div>
@@ -38,7 +44,6 @@ const ContactForm = () => {
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
       >
-        {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
           <label>
@@ -48,28 +53,24 @@ const ContactForm = () => {
           </label>
         </p>
         <p>
-          <label>
-            Your name:
-            <br />
-            <input type="text" name="name" onChange={handleChange} />
-          </label>
+          <TextField type="text" name="name" id="name" label="Your name" onChange={handleChange} />
         </p>
         <p>
-          <label>
-            Your email:
-            <br />
-            <input type="email" name="email" onChange={handleChange} />
-          </label>
+          <TextField type="email" name="email" id="email" label="Email" onChange={handleChange} />
         </p>
         <p>
-          <label>
-            Message:
-            <br />
-            <textarea name="message" onChange={handleChange} />
-          </label>
+          <TextField
+            name="message"
+            id="message"
+            label="Your message"
+            multiline
+            onChange={handleChange}
+          />
         </p>
         <p>
-          <button type="submit">Send</button>
+          <Button type="submit" variant="contained" color="primary">
+            Send
+          </Button>
         </p>
       </form>
     </div>
