@@ -1,2 +1,3 @@
-# iotbits-web
-IOTBITS website
+# IOTBITS Website
+IOTBITS official website repository
+
