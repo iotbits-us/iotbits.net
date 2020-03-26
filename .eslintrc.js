@@ -21,6 +21,6 @@ module.exports = {
     'no-unneeded-ternary': 'off',
     'react/jsx-no-target-blank': 'off',
     'react/no-danger': 'off',
-    'prefer-destructuring': 'off'
+    'prefer-destructuring': 'off',
   },
 }
