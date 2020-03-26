@@ -40,7 +40,19 @@ const products = [
   },
   {
     name: 'Other',
-  }
+  },
+];
+
+const topics = [
+  {
+    name: 'Technical Support',
+  },
+  {
+    name: 'Sales',
+  },
+  {
+    name: 'Other',
+  },
 ];
 
 function encode(data) {
@@ -130,14 +142,36 @@ const ContactForm = () => {
             onChange={handleChange}
           />
           <TextField
-            id="outlined-select-currency"
+            id="product"
+            name="product"
             select
             label="Product"
             value={state.product}
             onChange={handleChange}
+            margin="dense"
             variant="outlined"
+            style={{ margin: 8 }}
+            fullWidth
           >
             {products.map(item => (
+              <MenuItem key={item.name} value={item.name}>
+                {item.name}
+              </MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            id="topic"
+            name="topic"
+            select
+            label="Topic"
+            value={state.topic}
+            onChange={handleChange}
+            margin="dense"
+            variant="outlined"
+            style={{ margin: 8 }}
+            fullWidth
+          >
+            {topics.map(item => (
               <MenuItem key={item.name} value={item.name}>
                 {item.name}
               </MenuItem>
