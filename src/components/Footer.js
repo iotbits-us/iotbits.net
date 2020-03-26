@@ -23,7 +23,9 @@ const Footer = props => (
               </li>
               <li>
                 {' '}
-                <a href="https://blog.iotbits.net" target="_blank" rel="noopener noreferrer">Blog</a>
+                <a href="https://blog.iotbits.net" target="_blank" rel="noopener noreferrer">
+                  Blog
+                </a>
               </li>
               <li>
                 {' '}
