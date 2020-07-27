@@ -48,12 +48,21 @@ class Form extends React.Component {
           throw new Error('Network error')
         }
       })
-      .then(() => {
+      .then(ss => {
         form.reset()
         this.setState({
           alert: this.props.successMessage,
           disabled: false
         })
+
+        console.log(
+          'ddd:',
+          encode({
+            'form-name': form.getAttribute('name'),
+            name: 'Evert'
+          })
+        )
+        console.log('resukt:', ss)
       })
       .catch(err => {
         console.error(err)
