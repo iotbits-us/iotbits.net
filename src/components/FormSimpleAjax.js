@@ -37,7 +37,7 @@ class Form extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: {
-        'form-name': form.getAttribute('name'),
+        'form-name': 'Contact Form',
         ...data
       }
     })
