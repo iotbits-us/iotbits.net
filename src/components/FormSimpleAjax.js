@@ -5,6 +5,12 @@ import { serialize } from 'dom-form-serializer'
 
 import './Form.css'
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&')
+}
+
 class Form extends React.Component {
   static defaultProps = {
     name: 'Contact Us',
@@ -27,9 +33,13 @@ class Form extends React.Component {
     const form = e.target
     const data = serialize(form)
     this.setState({ disabled: true })
-    fetch(form.action + '?' + stringify(data), {
+    fetch('/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...data
+      })
     })
       .then(res => {
         if (res.ok) {
