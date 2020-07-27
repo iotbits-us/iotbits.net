@@ -382,6 +382,102 @@ collections: # A list of collections the CMS should be able to edit
             }
           - { label: Noindex, name: noindex, widget: boolean, required: false }
 
+  - name: services
+    label: Service
+    editor:
+      preview: true
+    folder: content/services
+    slug: "{{slug}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {
+          label: Template,
+          name: template,
+          widget: hidden,
+          default: SingleService,
+        }
+      - { label: Title, name: title, widget: string }
+      - {
+          label: Featured Image,
+          name: featuredImage,
+          widget: image,
+          required: false,
+        }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Content, name: body, widget: markdown }
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        required: false
+        fields:
+          - label: "Category"
+            name: "category"
+            widget: "relation"
+            collection: "serviceCategories"
+            searchFields: ["title"]
+            valueField: "title"
+      - label: "Meta"
+        required: false
+        name: "meta"
+        widget: "object"
+        fields:
+          - { label: Title, name: title, widget: string, required: false }
+          - {
+              label: Description,
+              name: description,
+              widget: text,
+              required: false,
+            }
+          - {
+              label: Canonical Link,
+              name: canonicalLink,
+              widget: string,
+              required: false,
+            }
+          - { label: Noindex, name: noindex, widget: boolean, required: false }
+
+  - name: serviceCategories
+    label: Service Category
+    editor:
+      preview: false
+    folder: content/serviceCategories
+    slug: "{{slug}}"
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {
+          label: Template,
+          name: template,
+          widget: hidden,
+          default: ServicesIndex,
+        }
+      - { label: Title, name: title, widget: string }
+      - { label: Subtitle, name: subtitle, widget: string, required: false }
+      - {
+          label: Featured Image,
+          name: featuredImage,
+          widget: image,
+          required: false,
+        }
+      - label: "Meta"
+        required: false
+        name: "meta"
+        widget: "object"
+        fields:
+          - { label: Title, name: title, widget: string, required: false }
+          - {
+              label: Description,
+              name: description,
+              widget: text,
+              required: false,
+            }
+          - {
+              label: Canonical Link,
+              name: canonicalLink,
+              widget: string,
+              required: false,
+            }
+          - { label: Noindex, name: noindex, widget: boolean, required: false }
+
   - name: "settings"
     label: "Settings"
     delete: false # Prevent users from deleting documents in this collection
