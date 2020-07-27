@@ -1,5 +1,5 @@
 ---
 template: BlogIndex
-title: ModbiusBox
+title: ModbusBox
 ---
 
