@@ -8,8 +8,8 @@ import './Form.css'
 class Form extends React.Component {
   static defaultProps = {
     name: 'Contact Us',
-    subject: '', // optional subject of the notification email
-    action: '',
+    subject: 'Subject', // optional subject of the notification email
+    action: '/',
     successMessage: 'Thanks for your enquiry, we will get back to you soon',
     errorMessage:
       'There is a problem, your message has not been sent, please try contacting us via email'
@@ -28,7 +28,12 @@ class Form extends React.Component {
     const data = serialize(form)
     this.setState({ disabled: true })
     fetch(form.action + '?' + stringify(data), {
-      method: 'POST'
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...state
+      })
     })
       .then(res => {
         if (res.ok) {
@@ -66,7 +71,8 @@ class Form extends React.Component {
           name={name}
           action={action}
           onSubmit={this.handleSubmit}
-          data-netlify=""
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           netlify-recaptcha="6Ld957YZAAAAAGY_zoJfrtUkPCaMOT55-FGCJXwn"
         >
           {this.state.alert && (
