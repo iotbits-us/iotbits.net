@@ -38,7 +38,7 @@ class Form extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: {
         'form-name': 'Contact Form',
-        ...data
+        ...form
       }
     })
       .then(res => {
