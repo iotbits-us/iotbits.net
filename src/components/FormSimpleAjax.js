@@ -29,11 +29,7 @@ class Form extends React.Component {
     this.setState({ disabled: true })
     fetch(form.action + '?' + stringify(data), {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...state
-      })
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     })
       .then(res => {
         if (res.ok) {
