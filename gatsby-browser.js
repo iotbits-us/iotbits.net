@@ -1,2 +1,7 @@
-// eslint-disable-next-line import/prefer-default-export
-export const onServiceWorkerUpdateReady = () => window.location.reload(true);
+/**
+ * Implement Gatsby's Browser APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/browser-apis/
+ */
+
+ // You can delete this file if you're not using it

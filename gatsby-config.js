@@ -1,101 +1,139 @@
+const postcssPresetEnv = require('postcss-preset-env')
+
 module.exports = {
   siteMetadata: {
-    title: 'IOTBITS',
-    author: 'Evert Arias',
-    description: 'Providing toilored IoT solutions for industries and makers',
-    siteUrl: 'https://iotbits.net/',
-    contact: {
-      phone: '+1 (786) 460-2431',
-      email: 'support@iotbits.net',
-      telegram: 'https://t.me/IOTBITS',
-    },
-    menuLinks: [
-      {
-        name: 'Home',
-        link: '/',
-      },
-      {
-        name: 'About Us',
-        link: '/about-us',
-      },
-      {
-        name: 'Products',
-        link: '/products',
-      },
-      {
-        name: 'Blog',
-        link: 'https://blog.iotbits.net',
-      },
-      {
-        name: 'Contact',
-        link: '/contact',
-      },
-    ],
-    social: {
-      Twitter: '',
-    },
+    title: 'Yellowcake',
+    siteUrl: 'https://yellowcake.netlify.com'
   },
   plugins: [
-    'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
+    'gatsby-transformer-yaml',
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-google-tagmanager',
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
+        /*id: 'GTM-add_your_tag_here',*/
+        id: 'GTM-P4RNF8D',
+        includeInDevelopment: false
+      }
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-offline',
       options: {
-        path: `${__dirname}/src/data`,
-        name: 'data',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/images`,
-        name: 'images',
-      },
-    },
-    {
-      resolve: 'gatsby-source-strapi',
-      options: {
-        apiURL: 'https://api.iotbits.net',
-        contentTypes: [
-          // List of the Content Types you want to be able to request from Gatsby.
-          'product',
-          'company-feature',
-          'post',
-          'author',
+        runtimeCaching: [
+          {
+            // Use cacheFirst since these don't need to be revalidated (same RegExp
+            // and same reason as above)
+            urlPattern: /(\.js$|\.css$|static\/)/,
+            handler: `cacheFirst`
+          },
+          {
+            // Add runtime caching of various other page resources
+            urlPattern: /^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/,
+            handler: `staleWhileRevalidate`
+          },
+          {
+            // uploadcare
+            urlPattern: /^https:\/\/ucarecdn.com\/[-a-zA-Z0-9@:%_\+.~#?&//=]*?\/10x\//,
+            handler: `staleWhileRevalidate`
+          }
         ],
-        queryLimit: 1000,
-      },
+        skipWaiting: true,
+        clientsClaim: true
+      }
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        trackingId: 'UA-158635021-2',
-        // Puts tracking script in the head instead of the body
-        head: false,
-      },
+        name: 'yellowcake',
+        short_name: 'yellowcake',
+        start_url: '/',
+        background_color: '#00C2BD',
+        theme_color: '#00C2BD',
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: 'standalone',
+        icon: `${__dirname}/static/images/logo.svg` // This path is relative to the root of the site.
+      }
     },
-    'gatsby-transformer-sharp',
+
+    // Add static assets before markdown files
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/static/images`,
+        name: 'images'
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content`,
+        name: 'pages'
+      }
+    },
+
+    // images
     'gatsby-plugin-sharp',
-    'gatsby-plugin-offline',
-    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+
     {
-      resolve: 'gatsby-plugin-material-ui',
-      // If you want to use styled components you should change the injection order.
+      resolve: 'gatsby-transformer-remark',
       options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
+        plugins: [
+          // gatsby-remark-relative-images must
+          // go before gatsby-remark-images
+          'gatsby-remark-relative-images',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              linkImagesToOriginal: false
+            }
+          },
+          `gatsby-remark-responsive-iframe`
+        ]
+      }
     },
-    // If you want to use styled components you should add the plugin here.
-    // 'gatsby-plugin-styled-components',
-  ],
-};
+
+    // css (replace with gatsby-plugin-sass for v2)
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [
+          postcssPresetEnv({
+            browsers: '> 0.5%, last 2 versions, ie 11'
+          })
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require(`postcss-preset-env`)({
+            browsers: '> 0.5%, last 2 versions, ie 11'
+          })
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        // Setting a color is optional.
+        color: 'white',
+        // Disable the loading spinner.
+        showSpinner: false
+      }
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
+        stylesPath: `${__dirname}/src/cms/admin.css`,
+        enableIdentityWidget: true
+      }
+    },
+    'gatsby-plugin-netlify' // make sure to keep it last in the array
+  ]
+}

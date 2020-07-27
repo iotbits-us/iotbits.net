@@ -1,0 +1,66 @@
+.ServiceSection {
+}
+
+.ServiceSection--Grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.ServiceSection button {
+  margin-top: 1rem;
+  margin-top: 5rem;
+  background: white;
+  border: 2px solid black;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+.ServiceSection button:hover {
+  background: black;
+  border: 2px solid white;
+  color: white;
+}
+
+.ServiceSection--Grid > * {
+  width: calc(33.33% - 2rem);
+  margin-bottom: 4rem;
+}
+
+@supports (display: grid) {
+  .ServiceSection--Grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+  }
+
+  .ServiceSection--Grid > * {
+    width: auto;
+    margin: 0;
+  }
+}
+
+.ServiceSection--Title {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 888px) {
+  .ServiceSection--Grid > * {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+    display: block;
+  }
+
+  @supports (display: grid) {
+    .ServiceSection--Grid {
+      display: block;
+      grid-template-columns: 1;
+      grid-gap: 0;
+    }
+  }
+}

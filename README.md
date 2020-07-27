@@ -1,3 +1,5 @@
 # IOTBITS Website
-IOTBITS official website repository
 
+## Copyright
+
+2020 © [IOTBITS](https://iotbits.net/)
