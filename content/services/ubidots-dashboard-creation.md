@@ -1,9 +1,10 @@
 ---
 template: SingleService
 title: Ubidots Dashboard Creation
-featuredImage: 'https://ucarecdn.com/bd5d1edc-73be-488a-9d50-8ec28f5ab6a9/'
+featuredImage: 'https://ucarecdn.com/1fa48430-d1fa-4e36-99fe-078a14913fcf/'
 excerpt: >-
-  Create a dashboard to show the variables in widgets available in Ubidots platform.
+  Create a dashboard to show the variables in widgets available in Ubidots
+  platform.
 categories:
   - category: Ubidots
 meta:
