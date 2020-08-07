@@ -4,6 +4,7 @@ import './cms-utils'
 
 import { HomePageTemplate } from '../templates/HomePage'
 import { ServicesIndexTemplate } from '../templates/ServicesIndex'
+import { SingleServiceTemplate } from '../templates/SingleService'
 import { ContactPageTemplate } from '../templates/ContactPage'
 import { DefaultPageTemplate } from '../templates/DefaultPage'
 import { BlogIndexTemplate } from '../templates/BlogIndex'
@@ -28,6 +29,9 @@ CMS.registerPreviewTemplate('home-page', ({ entry }) => (
 ))
 CMS.registerPreviewTemplate('services-page', ({ entry }) => (
   <ServicesIndexTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('services', ({ entry }) => (
+  <SingleServiceTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('contact-page', ({ entry }) => (
   <ContactPageTemplate {...entry.toJS().data} />
