@@ -1,7 +1,7 @@
 ---
 template: SingleService
 title: Github Training
-featuredImage: 'https://ucarecdn.com/6f79c078-1067-4c80-8547-8e3719158795/'
+featuredImage: 'https://ucarecdn.com/7660e175-4971-4214-833c-d60dcd62f0af/'
 excerpt: >-
   A remote trainings and hand on how to use GitHub as tool to store and maintain
   project information.
