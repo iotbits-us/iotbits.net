@@ -1,4 +1,5 @@
 ---
+template: SingleService
 title: Github Training
 featuredImage: 'https://ucarecdn.com/bd5d1edc-73be-488a-9d50-8ec28f5ab6a9/'
 excerpt: >-
