@@ -3,14 +3,13 @@ template: HomePage
 slug: ''
 title: IOTBITS
 featuredImage: 'https://ucarecdn.com/43130c2b-8921-485e-ad8c-7807a93293cd/'
+video: 'https://ucarecdn.com/144b5b18-0a83-4419-992b-ae7f69ab57c6/'
+videoPoster: 'https://ucarecdn.com/69ba14a8-6481-4671-abb6-0e6f0d9c3e46/'
+videoTitle: Introducing ModbusBox
 subtitle: Providing tailored IoT solutions for industries and makers
 meta:
   description: This is a meta description.
   title: The Ultimate Gatsby Starter
-
-video: 'https://ucarecdn.com/e6979298-66d6-4245-b496-6e5a5d507135/'
-videoPoster: 'https://ucarecdn.com/69ba14a8-6481-4671-abb6-0e6f0d9c3e46/'
-videoTitle: Introducing ModbusBox
 ---
 
 # Products
